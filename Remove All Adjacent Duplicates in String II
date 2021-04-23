@@ -1,0 +1,17 @@
+class Solution:
+    def removeDuplicates(self, s: str, k: int) -> str:
+        var=[]
+        for ch in s:
+            if var and var[-1][0]==ch: # match the top character
+                var[-1][1]+=1 #increase the count of that character
+                if var[-1][1]>=k:
+                    var.pop()
+            else:
+                var.append([ch,1]) # else add that character as it is
+        
+        output=""
+        for x in var:
+            output+=(x[0]*x[1])
+            
+        return output
+    
